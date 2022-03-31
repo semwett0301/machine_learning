@@ -29,5 +29,5 @@ predict_data_test = test_data.drop(['competitorname', 'Y'], axis=1)
 print(recall_score(test_data['Y'], log.predict(predict_data_test)))
 print(precision_score(test_data['Y'], log.predict(predict_data_test)))
 
-fpr, tpr, thresholds = roc_curve(test_data['Y'], log.predict(predict_data_test), pos_label=0)
+fpr, tpr, thresholds = roc_curve(test_data['Y'], log.predict_proba(predict_data_test)[:,1], pos_label=1)
 print(auc(fpr, tpr))
